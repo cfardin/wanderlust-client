@@ -21,8 +21,8 @@ const Navbar = () => {
             <Link href="/bookings" className="hover:text-gray-900 transition-colors">
               My Bookings
             </Link>
-            <Link href="/admin" className="hover:text-gray-900 transition-colors">
-              Admin
+            <Link href="/add-destination" className="hover:text-gray-900 transition-colors">
+              Add-Destination
             </Link>
           </div>
 
