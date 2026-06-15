@@ -1,4 +1,5 @@
 "use client";
+import { authClient } from "@/lib/auth-client";
 import { Check } from "@gravity-ui/icons";
 import {
     Button,
@@ -9,6 +10,7 @@ import {
     Label,
     TextField,
 } from "@heroui/react";
+import { redirect } from "next/navigation";
 
 
 const LoginPage = () => {
@@ -20,6 +22,20 @@ const LoginPage = () => {
         const loginInfo = Object.fromEntries(formData.entries());
 
         console.log(loginInfo);
+
+        const {data, error} = await authClient.signIn.email({
+            email : loginInfo.email,
+            password : loginInfo.password
+        })
+
+        console.log({data, error});
+
+        // if(data){
+        //     redirect("/");
+        // }
+        if(error){
+            alert("Can't Login");
+        }
     }
 
 
