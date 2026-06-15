@@ -1,4 +1,5 @@
 "use client";
+import { authClient } from "@/lib/auth-client";
 import { Check } from "@gravity-ui/icons";
 import {
     Button,
@@ -9,6 +10,7 @@ import {
     Label,
     TextField,
 } from "@heroui/react";
+import { redirect } from "next/navigation";
 
 
 const SignUp = () => {
@@ -19,7 +21,22 @@ const SignUp = () => {
         const formData = new FormData(e.currentTarget);
         const userData = Object.fromEntries(formData.entries());
 
-        console.log(userData);
+        // console.log(userData);
+
+        const {data, error} = await authClient.signUp.email({
+            email : userData.email,
+            image : userData.image,
+            name : userData.name,
+            password : userData.password
+        });
+
+        // 
+        if(data){
+            redirect('/');
+        }
+        if(error){
+            alert("error, fuck u");
+        }
     }
     return (
         <div className="min-h-screen bg-slate-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
