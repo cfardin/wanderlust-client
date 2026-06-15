@@ -13,6 +13,7 @@ const DestinationInfo = async ({ params }) => {
     const destination = await res.json();
 
     const {
+        _id,
         destinationName,
         country,
         price,

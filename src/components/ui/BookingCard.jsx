@@ -1,9 +1,56 @@
+"use client";
+
+import { authClient } from "@/lib/auth-client";
+import { DateField, Label } from "@heroui/react";
+import { username } from "better-auth/plugins";
 import { Check } from "lucide-react";
-import React from "react";
+import React, { useState } from "react";
 
-const BookingCard = ({destination}) => {
+const BookingCard = ({ destination }) => {
+       const {
+        _id,
+        destinationName,
+        country,
+        price,
+        duration,
+        imageUrl,
+        description,
+    } = destination;
 
-    const {departureDate, price} = destination;
+    const { data: session, isPending } = authClient.useSession();
+    const user = session?.user;
+
+    const [departureDate , setDepartureDate] = useState(null);
+    // console.log(new Date(departureDate));
+
+    const handleBooking = async() =>{
+        const bookingData = {
+            userId : user?._id,
+            userImage : user?.image,
+            userName : user?.name,
+            destinationId : _id,
+            destinationName, 
+            price,
+            imageUrl,
+            country,
+            departureDate : new Date(departureDate)
+
+        };
+
+        const res = await fetch("http://localhost:5000/booking", {
+            method : "POST", 
+            headers : {
+                'content-type' : "application/json"
+            },
+            body : JSON.stringify(bookingData)
+        });
+
+        const data = await res.json();
+        console.log(data);
+
+    };
+
+
     return (
         <div className="lg:col-span-1">
             <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm sticky top-8">
@@ -15,12 +62,26 @@ const BookingCard = ({destination}) => {
                     </span>
                 </h3>
 
-                {/* Replaced input with a static display div */}
-                <div className="w-full p-3 border border-gray-200 bg-gray-50 rounded-lg mb-4 text-gray-700 font-medium">
-                    {departureDate}
-                </div>
+                {/* Replaced input with a static display div  */}
+                {/* <div className="w-full p-3 border border-gray-200 bg-gray-50 rounded-lg mb-4 text-gray-700 font-medium">
 
-                <button className="w-full bg-[#0ea5e9] text-white py-3 rounded-lg font-semibold hover:bg-sky-600 transition-colors mb-6">
+                </div> */}
+                <DateField
+                    onChange={setDepartureDate}
+                    className="w-[256px] mb-5"
+                    name="date"
+                >
+                    <Label>Departure Date</Label>
+                    <DateField.Group>
+                        <DateField.Input>
+                            {(segment) => (
+                                <DateField.Segment segment={segment} />
+                            )}
+                        </DateField.Input>
+                    </DateField.Group>
+                </DateField>
+
+                <button onClick={handleBooking} className="w-full bg-[#0ea5e9] text-white py-3 rounded-lg font-semibold hover:bg-sky-600 transition-colors mb-6">
                     Book Now →
                 </button>
 
