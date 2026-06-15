@@ -61,6 +61,16 @@ const Navbar = () => {
                         <div className="flex gap-5 justify-center items-center">
                             <div>
                                 <Avatar>
+                                    <Link href={"/profile"}>
+                                        <Avatar.Image
+                                            referrerPolicy="no-referrer"
+                                            alt="John Doe"
+                                            src={user?.image}
+                                        />
+                                        {/* <Avatar.Fallback>
+                                            {user.name.charAt(0)}
+                                        </Avatar.Fallback> */}
+                                    </Link>
                                     <Avatar.Image
                                         referrerPolicy="no-referrer"
                                         alt="John Doe"
@@ -72,13 +82,13 @@ const Navbar = () => {
                                 </Avatar>
                             </div>
                             <div>
-                              <h4>Hello {user.name}</h4>
+                                <h4>Hello {user.name}</h4>
                             </div>
                             <div>
                                 <Button
                                     size="sm"
                                     onClick={handleSignOut}
-                                    variant="danger"
+                                    variant="outline"
                                     className={""}
                                 >
                                     Logout
@@ -105,19 +115,6 @@ const Navbar = () => {
                             </Link>
                         </div>
                     )}
-
-                    {/* <div className="flex items-center space-x-6 text-sm font-medium text-gray-700">
-            <button className="flex items-center space-x-1 hover:text-gray-900 transition-colors">
-              <User className="w-4 h-4" />
-              <span>Profile</span>
-            </button>
-            <Link href="/login" className="hover:text-gray-900 transition-colors">
-              Login
-            </Link>
-            <Link href="/signup" className="hover:text-gray-900 transition-colors">
-              Sign Up
-            </Link>
-          </div> */}
                 </div>
             </div>
         </nav>

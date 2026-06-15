@@ -1,6 +1,7 @@
 "use client";
 import { authClient } from "@/lib/auth-client";
 import { Check } from "@gravity-ui/icons";
+import { FcGoogle } from "react-icons/fc";
 import {
     Button,
     Description,
@@ -37,6 +38,12 @@ const SignUp = () => {
         if(error){
             alert("error, fuck u");
         }
+    }
+
+    const handleGooglSignIn = async () =>{
+        await authClient.signIn.social({
+            provider : "google"
+        })
     }
     return (
         <div className="min-h-screen bg-slate-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
@@ -112,15 +119,27 @@ const SignUp = () => {
                                 Sign Up
                             </Button>
                             
-                            <Button
+                            {/* <Button
                                 type="reset" 
                                 variant="secondary"
                                 className="w-full py-2 px-4 border border-slate-300 rounded-md shadow-sm text-sm font-medium text-slate-700 bg-white hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors"
                             >
-                                Reset Form
-                            </Button>
+                                <FcGoogle />
+                                Sign Up using Google
+                            </Button> */}
                         </div>
                     </Form>
+
+                    <div>
+                        <Button
+                                onClick={handleGooglSignIn}
+                                variant="secondary"
+                                className="mt-5 w-full py-2 px-4 border border-slate-300 rounded-md shadow-sm text-sm font-medium text-slate-700 bg-white hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors"
+                            >
+                                <FcGoogle />
+                                Sign Up using Google
+                            </Button>
+                    </div>
                 </div>
             </div>
         </div>

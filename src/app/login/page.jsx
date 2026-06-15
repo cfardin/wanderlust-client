@@ -28,11 +28,10 @@ const LoginPage = () => {
             password : loginInfo.password
         })
 
-        console.log({data, error});
 
-        // if(data){
-        //     redirect("/");
-        // }
+        if(data){
+            redirect("/");
+        }
         if(error){
             alert("Can't Login");
         }
