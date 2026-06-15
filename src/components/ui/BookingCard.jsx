@@ -5,6 +5,7 @@ import { DateField, Label } from "@heroui/react";
 import { username } from "better-auth/plugins";
 import { Check } from "lucide-react";
 import React, { useState } from "react";
+import toast from "react-hot-toast";
 
 const BookingCard = ({ destination }) => {
        const {
@@ -46,7 +47,8 @@ const BookingCard = ({ destination }) => {
         });
 
         const data = await res.json();
-        console.log(data);
+        
+        toast.success("Booking Successful");
 
     };
 
