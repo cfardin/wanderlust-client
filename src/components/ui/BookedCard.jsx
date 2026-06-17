@@ -1,5 +1,7 @@
 "use client"
 import { Calendar, MapPin, Trash2, Eye } from 'lucide-react';
+import DeleteBtn from './DeleteBtn';
+import DeleteBookingBtn from './DeleteBookingBtn';
 
 const BookedCard = ({ b }) => {
     const {
@@ -20,6 +22,9 @@ const BookedCard = ({ b }) => {
             year: 'numeric'
         });
     };
+
+
+
 
     return (
         <div className="bg-white border border-gray-100 rounded-xl shadow-sm overflow-hidden flex flex-col md:flex-row items-center p-4 gap-6 max-w-5xl mx-auto mb-4 hover:shadow-md transition-shadow">
@@ -69,13 +74,9 @@ const BookedCard = ({ b }) => {
 
                 {/* Actions Button Group */}
                 <div className="flex items-center gap-3 w-full md:w-auto justify-end pt-2 md:pt-0">
-                    <button 
-                        onClick={() => console.log("Cancel order:", _id)}
-                        className="flex items-center justify-center gap-2 border border-red-200 text-red-500 hover:bg-red-50 font-medium px-4 py-2 rounded-lg text-sm transition-colors w-1/2 md:w-auto"
-                    >
-                        <Trash2 className="w-4 h-4" />
-                        Cancel
-                    </button>
+                    <div>
+                        <DeleteBookingBtn b = {b}></DeleteBookingBtn>
+                    </div>
                     
                     <button 
                         onClick={() => console.log("Viewing order:", _id)}

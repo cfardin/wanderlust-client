@@ -15,7 +15,7 @@ const BookedPage = async() => {
     console.log(bookedData);
 
     if(!user){
-        return <div>Login first</div>
+        return <div className='my-40 text-center'>Login first</div>
     }
 
  
