@@ -1,4 +1,3 @@
-// lib/auth.js (or wherever your database/auth config lives)
 import dns from "node:dns";
 
 // Execute this immediately at the top of the file server-side

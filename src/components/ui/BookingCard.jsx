@@ -19,14 +19,15 @@ const BookingCard = ({ destination }) => {
     } = destination;
 
     const { data: session, isPending } = authClient.useSession();
-    const user = session?.user;
+    const user = session.user;
+
+    // console.log(user);
 
     const [departureDate , setDepartureDate] = useState(null);
-    // console.log(new Date(departureDate));
 
     const handleBooking = async() =>{
         const bookingData = {
-            userId : user?._id,
+            userId : user?.id,
             userImage : user?.image,
             userName : user?.name,
             destinationId : _id,
@@ -35,7 +36,6 @@ const BookingCard = ({ destination }) => {
             imageUrl,
             country,
             departureDate : new Date(departureDate)
-
         };
 
         const res = await fetch("http://localhost:5000/booking", {
