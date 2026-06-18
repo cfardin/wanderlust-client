@@ -22,7 +22,7 @@ const Navbar = () => {
                     <div className="flex items-center space-x-6 text-sm font-medium text-gray-700">
                         <Link
                             href="/"
-                            className="text-[#0ea5e9] underline underline-offset-4 decoration-2"
+                            className=" underline-offset-4 decoration-2"
                         >
                             Home
                         </Link>
@@ -70,7 +70,6 @@ const Navbar = () => {
                                         {/* <Avatar.Fallback>
                                             {user.name.charAt(0)}
                                         </Avatar.Fallback> */}
-                                    </Link>
                                     <Avatar.Image
                                         referrerPolicy="no-referrer"
                                         alt="John Doe"
@@ -79,6 +78,7 @@ const Navbar = () => {
                                     <Avatar.Fallback>
                                         {user.name.charAt(0)}
                                     </Avatar.Fallback>
+                                    </Link>
                                 </Avatar>
                             </div>
                             <div>
@@ -97,10 +97,10 @@ const Navbar = () => {
                         </div>
                     ) : (
                         <div className="flex items-center space-x-6 text-sm font-medium text-gray-700">
-                            <button className="flex items-center space-x-1 hover:text-gray-900 transition-colors">
+                            <Link href="/login" className="flex items-center space-x-1 hover:text-gray-900 transition-colors">
                                 <User className="w-4 h-4" />
                                 <span>Profile</span>
-                            </button>
+                            </Link>
                             <Link
                                 href="/login"
                                 className="hover:text-gray-900 transition-colors"
