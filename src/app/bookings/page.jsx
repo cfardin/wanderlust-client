@@ -8,11 +8,18 @@ const BookedPage = async() => {
     })
 
     const user = session?.user;
+    const {token} = await auth.api.getToken({
+        headers : await headers()
+    });
 
-    const res = await fetch(`http://localhost:5000/booking/${user?.id}`);
+    const res = await fetch(`http://localhost:5000/booking/${user?.id}`, {
+        headers : {
+            authorization : `Bearer ${token}`
+        }
+    });
     const bookedData = await res.json();
 
-    console.log(bookedData);
+    // console.log(bookedData);
 
     if(!user){
         return <div className='my-40 text-center'>Login first</div>
