@@ -19,7 +19,7 @@ const BookingCard = ({ destination }) => {
     } = destination;
 
     const { data: session, isPending } = authClient.useSession();
-    const user = session.user;
+    const user = session?.user;
 
     // console.log(user);
 

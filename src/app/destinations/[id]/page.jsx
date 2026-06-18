@@ -5,13 +5,20 @@ import { Button } from "@heroui/react";
 import UpdateModalForm from "@/components/ui/UpdateModalForm";
 import DeleteBtn from "@/components/ui/DeleteBtn";
 import BookingCard from "@/components/ui/BookingCard";
+import { headers } from "next/headers";
+import { auth } from "@/lib/auth";
 
 const DestinationInfo = async ({ params }) => {
     const { id } = await params;
 
+    const {token} = await auth.api.getToken({
+        headers : await headers()
+    });
+
+
     const res = await fetch(`http://localhost:5000/destination/${id}`, {
         headers : {
-            authorization : "logged in"
+            authorization : `Bearer ${token}`
         }
     });
     const destination = await res.json();
