@@ -16,7 +16,7 @@ const DestinationInfo = async ({ params }) => {
     });
 
 
-    const res = await fetch(`http://localhost:5000/destination/${id}`, {
+    const res = await fetch(`${process.env.SERVER_URL}/destination/${id}`, {
         headers : {
             authorization : `Bearer ${token}`
         }
@@ -55,7 +55,7 @@ const DestinationInfo = async ({ params }) => {
             </div>
 
             {/* Hero Image */}
-            <div className="w-full h-[400px] rounded-2xl overflow-hidden mb-8">
+            <div className="w-full h-100 rounded-2xl overflow-hidden mb-8">
                 <img
                     src={imageUrl}
                     alt={destinationName}

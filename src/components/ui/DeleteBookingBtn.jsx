@@ -8,7 +8,7 @@ const DeleteBookingBtn = ({ b }) => {
   const router = useRouter();
 
   const handleBookingCancel = async() =>{
-    const res = await fetch(`http://localhost:5000/booking/${b._id}`, {
+    const res = await fetch(`${process.env.SERVER_URL}/booking/${b._id}`, {
        method : "DELETE",
             headers : {
                 'content-type' : 'application/json'
