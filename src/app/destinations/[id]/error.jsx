@@ -10,9 +10,9 @@ const Error = ({ error, reset }) => {
             <h2 className="text-2xl font-bold text-gray-900 mb-2">
                 Something went wrong!
             </h2>
-            <p className="text-sm text-gray-500 max-w-sm mb-6">
+            {/* <p className="text-sm text-gray-500 max-w-sm mb-6">
                 {error?.message || "An unexpected error occurred while loading this page."}
-            </p>
+            </p> */}
             
             {/* Action Buttons */}
             <div className="flex gap-4">
